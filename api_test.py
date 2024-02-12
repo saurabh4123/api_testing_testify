@@ -37,6 +37,15 @@ class OpenApiTestCase(TestCase):
         #checking final result
         assert_equal(result,1.25)
 
+    def test_expAPI(self):
+        response=requests.get('http://api.mathjs.org/v4/?expr=2%2B3*sqrt(4)')
+        result = int(response.content.decode('utf-8'))
+        # Check if the response status code is 200 (OK)
+        assert_equal(response.status_code, 200)
+        #checking final result
+        assert_equal(result,8)
+
+
 if __name__ == '__main__':
     run()
         
